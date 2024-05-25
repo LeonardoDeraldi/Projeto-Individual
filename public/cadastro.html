@@ -71,7 +71,7 @@
           </div>
           <div class="campo">
             <span>Time Favorito:</span>
-            <select name="empresas" id="listaEmpresas">
+            <select name="times" id="listaTimes">
               <option selected>Selecione um Time</option>
             </select>
           </div>
@@ -108,13 +108,13 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var empresaVar = listaEmpresas.value
+    var timesVar = listaTimes.value
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      empresaVar == ""
+      timesVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -138,7 +138,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        empresaServer: empresaVar
+        timesServer: timesVar
       }),
     })
       .then(function (resposta) {
@@ -169,13 +169,13 @@
   }
 
   function listar() {
-    fetch("/empresas/listar", {
+    fetch("/times/listar", {
       method: "GET",
     })
       .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+        resposta.json().then((times) => {
+          times.forEach((times) => {
+            listaTimes.innerHTML += `<option value='${times.idTimes}'>${times.premios}</option>`;
           });
         });
       })
