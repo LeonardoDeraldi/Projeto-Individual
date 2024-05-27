@@ -66,8 +66,8 @@ body {
 .banner {
   padding: 40px 0;
   color: rgb(255, 255, 255);
-  height: 400px;
-  background-image: linear-gradient(to left, rgb(27, 74, 226), rgb(255, 0, 0), rgb(27, 74, 226));
+  height: 500px;
+  background-image: url('../assets/imgs/cesta.jpeg');
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-attachment: fixed;
   background-position: center;
@@ -95,7 +95,7 @@ body {
 
 .box {
   background-color: white;
-  width: 300px;
+  width: 200px;
   text-align: center;
   border: 5px solid black;
   padding: 20px 50px;
@@ -108,14 +108,35 @@ body {
   background-color: #e5e5e5;
   background-image: linear-gradient(to left, rgb(27, 74, 226), rgb(255, 0, 0), rgb(27, 74, 226));
   display: flex;
+  height: 500px;
 }
 
 .social .container {
   justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.box_foto{
+  background-color: white;
+  text-align: center center;
+  border: 5px solid black;
+  border-radius: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.403);
+  width: 350px;
+  height: 440px;
+}
+
+.box_foto img{
+  border-radius: 3px;
+  width: 350px;
+  height: 440px;
 }
 
 .box img {
-  width: 170px;
+  width: 120px;
+  height: 120px;
 }
 
 .social .container .boxes {
