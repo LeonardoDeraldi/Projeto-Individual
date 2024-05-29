@@ -354,12 +354,16 @@ input {
 
 .simulador {
   color: white;
+  background-image: linear-gradient(to left, rgb(27, 74, 226), rgb(255, 0, 0), rgb(27, 74, 226)); 
 }
 
 .simulador .container {
   flex-direction: column;
-  overflow: scroll; 
   height: var(--tamanho-simulador);
+}
+
+.simulador p{
+  font-size: 50;
 }
 
 /* ALERTA */

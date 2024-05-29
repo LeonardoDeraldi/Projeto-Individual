@@ -25,7 +25,7 @@
           <a href="index.html">Inicial</a>
         </li>
         <li>
-          <a href="simulador.html">Simulador</a>
+          <a href="sobre mim.html">Simulador</a>
         </li>
         <li>|</li>
         <li>
@@ -175,7 +175,7 @@
       .then(function (resposta) {
         resposta.json().then((times) => {
           times.forEach((times) => {
-            listaTimes.innerHTML += `<option value='${times.idTimes}'>${times.premios}</option>`;
+            listaTimes.innerHTML += `<option value='${times.idTimes}'>${times.nomeTime}</option>`;
           });
         });
       })

@@ -1,9 +1,9 @@
 var timeModel = require("../models/timeModel");
 
-function buscarPorPremios(req, res) {
+function buscarPorNomeTime(req, res) {
   var nomeTime = req.body.nomeTime;
 
-  timeModel.buscarPorPremios(premios).then((resultado) => {
+  timeModel.buscarPorNomeTime(nomeTime).then((resultado) => {
     res.status(200).json(resultado);
   });
 }
@@ -26,7 +26,7 @@ function cadastrar(req, res) {
   var premios = req.body.premios;
   var nomeTime = req.body.nomeTime;
 
-  timeModel.buscarPorPremios(premios).then((resultado) => {
+  timeModel.buscarPorNomeTime(nomeTime).then((resultado) => {
     if (resultado.length > 0) {
       res
         .status(401)
@@ -40,7 +40,7 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  buscarPorPremios,
+  buscarPorNomeTime,
   buscarPorIdTimes,
   cadastrar,
   listar,
