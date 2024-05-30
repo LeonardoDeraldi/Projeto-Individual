@@ -19,6 +19,14 @@ CREATE TABLE usuario (
 insert into times(nomeTime, premios) values
 ('Los Angeles Lakers', 6);
 
+CREATE TABLE quiz(
+	idQuiz INT PRIMARY KEY AUTO_INCREMENT,
+	certas INT,
+	erradas INT,
+	fkUsuario INT,
+	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+);
+
 select * from usuario;
 
 select * from times;
