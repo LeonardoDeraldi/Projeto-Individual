@@ -6,21 +6,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnlyBasketball | Tempo Real</title>
-
+    <title>Quiz</title>
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
 
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
+    <!-- <script src="../js/alerta.js"></script> -->
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,70
+        0;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script> -->
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body>
 
     <div class="janela">
 
@@ -33,7 +35,7 @@
             </div>
 
             <div class="btn-nav">
-                <h3>Pontos</h3>
+                <h3>Quiz</h3>
             </div>
 
             <div class="btn-nav-white">
@@ -42,11 +44,11 @@
                 </a>
             </div>
 
-            <div class="btn-nav-white">
+            <!-- <div class="btn-nav-white">
                 <a href="./mural.html">
                     <h3>Mural de Avisos</h3>
                 </a>
-            </div>
+            </div> -->
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
@@ -55,66 +57,247 @@
         </div>
 
         <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
+            <div id="quizContainer">
+                <div id="inicarQuiz">
+                    <h1>Quiz Praias</h1>
+                    <p>Bora testar seus conhecimentos?</p>
+                    <button onclick="iniciar()">Jogar</button>
+                </div>
+                <div id="quiz" style="display: none;">
+                    <div id="pergunta1" class="pergunta">
+                        <h2>Qual é a altura do aro de basquete em metros?</h2>
+                        <button onclick="responder(this, '3,05 metros')">3 metros</button>
+                        <button onclick="responder(this, '3,05 metros')">3,50 metros</button>
+                        <button onclick="responder(this, '3,05 metros')">3,05 metros</button>
+                        <button onclick="responder(this, '3,05 metros')">2,80 metros</button>
                     </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
+                    <div id="pergunta2" class="pergunta" style="display: none;">
+                        <h2>Quantos jogadores compõem uma equipe de basquete em quadra?</h2>
+                        <button onclick="responder(this, '5 jogadores')">5 jogadores</button>
+                        <button onclick="responder(this, '5 jogadores')">6 jogadores</button>
+                        <button onclick="responder(this, '5 jogadores')">4 jogadores</button>
+                        <button onclick="responder(this, '5 jogadores')">7 jogadores</button>
                     </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
+                    <div id="pergunta3" class="pergunta" style="display: none;">
+                        <h2>Quanto tempo dura um jogo de basquete, incluindo os intervalos?</h2>
+                        <button onclick="responder(this, '48 minutos')">46 minutos</button>
+                        <button onclick="responder(this, '48 minutos')">48 minutos</button>
+                        <button onclick="responder(this, '48 minutos')">50 minutos</button>
+                        <button onclick="responder(this, '48 minutos')">49 minutos</button>
                     </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
+                    <div id="pergunta4" class="pergunta" style="display: none;">
+                        <h2>Quais são os principais tipos de arremessos no basquete?</h2>
+                        <button onclick="responder(this, 'Arremesso de dois pontos e arremesso de três pontos.')">Arremesso de dois pontos e arremesso de quatro pontos</button>
+                        <button onclick="responder(this, 'Arremesso de dois pontos e arremesso de três pontos.')">Arremesso de um ponto e arremesso de três pontos</button>
+                        <button onclick="responder(this, 'Arremesso de dois pontos e arremesso de três pontos.')">Arremesso de um ponto e arremesso de dois pontos</button>
+                        <button onclick="responder(this, 'Arremesso de dois pontos e arremesso de três pontos.')">Arremesso de dois pontos e arremesso de três pontos.</button>
                     </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
+                    <div id="pergunta5" class="pergunta" style="display: none;">
+                        <h2>Qual é o time respectivo de Los Angeles?</h2>
+                        <button onclick="responder(this, 'Lakers')">Golden States</button>
+                        <button onclick="responder(this, 'Lakers')">Lakers</button>
+                        <button onclick="responder(this, 'Lakers')">76xers</button>
+                        <button onclick="responder(this, 'Lakers')">Heat</button>
+                    </div>
+                    <div id="pergunta6" class="pergunta" style="display: none;">
+                        <h2>Qual é o nome da linha que delimita a área de três pontos?s</h2>
+                        <button onclick="responder(this, 'Linha dos 3 pontos')">Garrafão</button>
+                        <button onclick="responder(this, 'Linha dos 3 pontos')">Meio Campo</button>
+                        <button onclick="responder(this, 'Linha dos 3 pontos')">Reta dos 3 pontos</button>
+                        <button onclick="responder(this, 'Linha dos 3 pontos')">Linha dos 3 pontos</button>
+                    </div>
+                    <div id="pergunta7" class="pergunta" style="display: none;">
+                        <h2>Quanto tempo um jogador tem para passar a bola depois de recebê-la?</h2>
+                        <button onclick="responder(this, '5 segundos')">5 segundos</button>
+                        <button onclick="responder(this, '5 segundos')">4 segundos</button>
+                        <button onclick="responder(this, '5 segundos')">6 segundos</button>
+                        <button onclick="responder(this, '5 segundos')">7 segundos</button>
+                    </div>
+                    <div id="pergunta8" class="pergunta" style="display: none;">
+                        <h2>O que significa "rebote" no basquete?</h2>
+                        <button onclick="responder(this, 'Captura da bola após um arremesso perdido.')">Captura da bola em área inimigo</button>
+                        <button onclick="responder(this, 'Captura da bola após um arremesso perdido.')">Captura da bola na linha dos 3 pontos</button>
+                        <button onclick="responder(this, 'Captura da bola após um arremesso perdido.')">Captura da bola no meio da quadra</button>
+                        <button onclick="responder(this, 'Captura da bola após um arremesso perdido.')">Captura da bola após um arremesso perdido.</button>
+                    </div>
+                    <div id="pergunta9" class="pergunta" style="display: none;">
+                        <h2>Quais são as posições tradicionais em uma equipe de basquete?</h2>
+                        <button onclick="responder(this, 'Armador, Ala-armador, Ala, Ala-pivô e Pivô')">Armador, Zagueiro, Ala, Ala-pivô e Pivô</button>
+                        <button onclick="responder(this, 'Armador, Ala-armador, Ala, Ala-pivô e Pivô')">Armador, Ala-armador, Ala, Ala-pivô e Pivô</button>
+                        <button onclick="responder(this, 'Armador, Ala-armador, Ala, Ala-pivô e Pivô')">Armador, Ala-armador, Ala, Ponta esquerda e Ponta direita</button>
+                        <button onclick="responder(this, 'Armador, Ala-armador, Ala, Ala-pivô e Pivô')">Armador, Ala-armador, Meio campo, Ala-pivô e Pivô</button>
+                    </div>
+                    <div id="pergunta10" class="pergunta" style="display: none;">
+                        <h2>O basquete foi inventado quando?</h2>
+                        <button onclick="responder(this, '1891')">1891</button>
+                        <button onclick="responder(this, '1891')">1888</button>
+                        <button onclick="responder(this, '1891')">1900</button>
+                        <button onclick="responder(this, '1891')">1884</button>
                     </div>
                 </div>
+                <div id="resultados" style="display: none;">
+                    <h2>Resultados do Quiz</h2>
+                    <canvas id="graficoResultados"></canvas>
+                    <div id="indicadores">
+                        <p>Média de acertos: <span id="media"></span></p>
+                        <p>Você está <span id="acimaOuAbaixo"></span> da média.</p>
+                        <p>Desempenho: <span id="desempenho"></span></p>
+                    </div>
+                    <button onclick="voltar()">Voltar</button>
+                </div>
             </div>
-
-            <div class="cards" id="cardAquarios">
-
-            </div>
-
         </div>
-
     </div>
-
+    <div id="fala_que_te_escuto"></div>
 </body>
 
 <script>
+    
+    // Define o nome do usuário a partir da sessão
+    const b_usuario = document.getElementById('b_usuario');
+    if (sessionStorage.NOME_USUARIO) {
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    } else {
+        b_usuario.innerHTML = 'usuário';
+    }
 
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
+    var respostasCorretas = 0;
+    var respostasIncorretas = 0;
+
+    function iniciar() {
+        document.getElementById('inicarQuiz').style.display = 'none';
+        document.getElementById('quiz').style.display = 'block';
+    }
+
+    var perguntaAtual = 1;
+    var totalDePerguntas = 10; // Corrigido para o número real de perguntas
+
+    function responder(botao, respostaCorreta) {
+        const respostaSelecionada = botao.textContent;
+        if (respostaSelecionada === respostaCorreta) {
+            respostasCorretas++;
+        } else {
+            respostasIncorretas++;
+        }
+        document.getElementById("pergunta" + perguntaAtual).style.display = "none";
+        if (perguntaAtual < totalDePerguntas) {
+            perguntaAtual++;
+            document.getElementById("pergunta" + perguntaAtual).style.display = "block";
+        } else {
+            fala_que_te_escuto.innerHTML = `<button onclick="jogar_banco()">Finalizar</button>` //exibirResultados();
+        }
+    }
+
+    function obterIdUsuario() {
+        return sessionStorage.ID_USUARIO || 'desconhecido';
+    }
+
+    function exibirResultados() {
+        const fk_usuario = obterIdUsuario();
+        document.getElementById("quiz").style.display = "none";
+        document.getElementById("resultados").style.display = "block";
+
+        const totalRespostas = respostasCorretas + respostasIncorretas;
+        const media = (respostasCorretas / totalRespostas) * 100;
+        document.getElementById("media").textContent = media.toFixed(2) + "%";
+
+        const mediaGeral = 70;
+        if (media >= mediaGeral) {
+            document.getElementById("acimaOuAbaixo").textContent = "acima";
+        } else {
+            document.getElementById("acimaOuAbaixo").textContent = "abaixo";
+        }
+
+        var desempenho = '';
+        if (media >= 80) {
+            desempenho = 'Bom';
+        } else if (media >= 50) {
+            desempenho = 'Médio';
+        } else {
+            desempenho = 'Ruim';
+        }
+        document.getElementById("desempenho").textContent = desempenho;
+
+        fetch('/medidas/salvar-resultados', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                acertos: respostasCorretas,
+                erros: respostasIncorretas,
+                fk_usuario: fk_usuario
+            })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao salvar resultados');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Resultados salvos com sucesso:', data);
+            })
+            .catch(error => {
+                console.error('Erro ao salvar resultados:', error);
+            });
+
+        const ctx = document.getElementById('graficoResultados').getContext('2d');
+        const quizChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Respostas Corretas', 'Respostas Incorretas'],
+                datasets: [{
+                    label: 'Quantidade',
+                    data: [respostasCorretas, respostasIncorretas],
+                    backgroundColor: [
+                        'rgba(75, 192, 192)',
+                        'rgba(255, 99, 132)',
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
         });
     }
 
+    function voltar() {
+        window.location.href = './dashboard.html';
+    }
+
+    function limparSessao() {
+        sessionStorage.clear();
+        window.location.href = '../index.html';
+    }
+
+    function jogar_banco() {
+        var respostasCorretasVar = respostasCorretas;
+        var respostasIncorretasVar = respostasIncorretas;
+        // var idUsuario = idUsuario;
+
+
+        fetch("/usuarios/jogar_banco", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                respostasCorretasServer: respostasCorretasVar,
+                respostasIncorretasServer: respostasIncorretasVar,
+                idUsuarioServer: sessionStorage.ID_USUARIO,
+            }),
+        })
+    }
 </script>
 
 </html>
