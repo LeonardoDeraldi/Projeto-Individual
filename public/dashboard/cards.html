@@ -148,10 +148,13 @@
             </div>
         </div>
     </div>
-    <div id="fala_que_te_escuto"></div>
+    <div id="mensagem"></div>
 </body>
 
 <script>
+
+    var certasDash = 0;
+    var erradasDash = 0;
     
     // Define o nome do usuário a partir da sessão
     const b_usuario = document.getElementById('b_usuario');
@@ -161,8 +164,8 @@
         b_usuario.innerHTML = 'usuário';
     }
 
-    var respostasCorretas = 0;
-    var respostasIncorretas = 0;
+    var corretas = 0;
+    var incorretas = 0;
 
     function iniciar() {
         document.getElementById('inicarQuiz').style.display = 'none';
@@ -175,16 +178,16 @@
     function responder(botao, respostaCorreta) {
         const respostaSelecionada = botao.textContent;
         if (respostaSelecionada === respostaCorreta) {
-            respostasCorretas++;
+            corretas++;
         } else {
-            respostasIncorretas++;
+            incorretas++;
         }
         document.getElementById("pergunta" + perguntaAtual).style.display = "none";
         if (perguntaAtual < totalDePerguntas) {
             perguntaAtual++;
             document.getElementById("pergunta" + perguntaAtual).style.display = "block";
         } else {
-            fala_que_te_escuto.innerHTML = `<button onclick="jogar_banco()">Finalizar</button>` //exibirResultados();
+            mensagem.innerHTML = `<button onclick="registrar(), timeout">Finalizar</button>` //exibirResultados();
         }
     }
 
@@ -197,8 +200,8 @@
         document.getElementById("quiz").style.display = "none";
         document.getElementById("resultados").style.display = "block";
 
-        const totalRespostas = respostasCorretas + respostasIncorretas;
-        const media = (respostasCorretas / totalRespostas) * 100;
+        const totalRespostas = corretas + incorretas;
+        const media = (corretas / totalRespostas) * 100;
         document.getElementById("media").textContent = media.toFixed(2) + "%";
 
         const mediaGeral = 70;
@@ -224,8 +227,8 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                acertos: respostasCorretas,
-                erros: respostasIncorretas,
+                acertos: corretas,
+                erros: incorretas,
                 fk_usuario: fk_usuario
             })
         })
@@ -249,7 +252,7 @@
                 labels: ['Respostas Corretas', 'Respostas Incorretas'],
                 datasets: [{
                     label: 'Quantidade',
-                    data: [respostasCorretas, respostasIncorretas],
+                    data: [corretas, incorretas],
                     backgroundColor: [
                         'rgba(75, 192, 192)',
                         'rgba(255, 99, 132)',
@@ -280,24 +283,53 @@
         window.location.href = '../index.html';
     }
 
-    function jogar_banco() {
-        var respostasCorretasVar = respostasCorretas;
-        var respostasIncorretasVar = respostasIncorretas;
+    function registrar() {
+        var corretasVar = corretas;
+        var incorretasVar = incorretas;
         // var idUsuario = idUsuario;
 
-
-        fetch("/usuarios/jogar_banco", {
+        fetch("/usuarios/registrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                respostasCorretasServer: respostasCorretasVar,
-                respostasIncorretasServer: respostasIncorretasVar,
+                corretasServer: corretasVar,
+                incorretasServer: incorretasVar,
                 idUsuarioServer: sessionStorage.ID_USUARIO,
             }),
         })
     }
-</script>
 
+    var timeout = setTimeout(function quizSelect() {
+        fetch("/usuarios/quizSelect", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.ID_USUARIO
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    console.log(json.resultado_Quiz[0])
+
+                    var resultado = json.resultado_Quiz[0];
+
+                    var certasBD = resultado.certas;
+                    var erradasBD = resultado.erradas;
+
+                    certasDash = certasBD;
+                    erradasDash = erradasBD;
+                })
+            }
+        })
+    }, 200)
+</script>
 </html>

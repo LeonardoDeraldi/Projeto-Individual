@@ -84,7 +84,63 @@ function cadastrar(req, res) {
     }
 }
 
+function registrar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var corretas = req.body.corretasServer;
+    var incorretas = req.body.incorretasServer;
+    var idUsuario = req.body.idUsuarioServer;
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.registrar(corretas, incorretas, idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+    function quizSelect(req,res){
+        var idUsuario = req.body.idUsuarioServer
+    
+        usuarioModel.quizSelect(idUsuario)
+        .then(
+            function (resultado_Quiz) {
+    
+                res.json({
+                    resultado_Quiz
+                });
+    }
+        )
+    }
+
+    function buscaApreencao(req, res) {
+        const limite_linhas = 1;
+      
+        usuarioModel.buscaApreencao(limite_linhas).then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar.", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+      }
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    registrar,
+    quizSelect,
+    buscaApreencao
 }
