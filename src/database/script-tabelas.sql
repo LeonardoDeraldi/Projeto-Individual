@@ -17,16 +17,25 @@ CREATE TABLE usuario (
 );
 
 insert into times(nomeTime, premios) values
-('Los Angeles Lakers', 6);
+('Los Angeles Lakers', 6),
+('Miami Heat', 10),
+('Chicago Bulls', 9);
 
 CREATE TABLE quiz(
-	idQuiz INT PRIMARY KEY AUTO_INCREMENT,
+	idQuiz INT AUTO_INCREMENT,
 	certas INT,
 	erradas INT,
 	fkUsuario INT,
-	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
+    primary key (idQuiz, fkUsuario)
 );
 
 select * from usuario;
 
 select * from times;
+
+select * from quiz;
+
+SELECT certas, erradas FROM usuario JOIN quiz ON idUsuario = fkUsuario;
+
+ SELECT usuario.nome, quiz.certas, quiz.erradas FROM usuario JOIN quiz ON idUsuario = fkUsuario;

@@ -123,6 +123,10 @@ body {
   background-color: #161618;
   height: 100vh;
   overflow: auto;
+  background-color:rgb(32, 83, 253);
+  color: white;
+  align-items: center;
+  justify-content: center;
 }
 
 .area-parametros-alerta {
@@ -349,7 +353,7 @@ canvas {
   justify-content: space-evenly;
   align-items: center;
   border-right: 3px solid #32b9cd;
-  background-color: #212124;
+  background-image: linear-gradient(to left, rgb(27, 74, 226), rgb(255, 0, 0), rgb(27, 74, 226)); 
 }
 
 .dash-right {
@@ -365,7 +369,7 @@ canvas {
 }
 
 .header-left h1 {
-  color: #32b9cd;
+  color: white;
 }
 
 .hello {
@@ -375,35 +379,52 @@ canvas {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: #ffffff;
   font-weight: 300;
   font-size: 1.2rem;
 }
 
 .hello h3 span {
   font-weight: 800;
+  color: white;
 }
 
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #e6005a;
+  background-color: #000000;
+  border: 3px solid #ffffff;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
+#iniciarQuiz{
+  width: 50%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: rgb(0, 0, 0);
+  flex-direction: column;
+  height: fit-content;
+  padding: 20px 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 .btn-nav-white {
   width: 40%;
   background-color: white;
-  border: 3px solid #e6005a;
+  border: 3px solid #000000;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
 .btn-nav-white h3 {
-  color: #e6005a;
+  color: #000000;
   padding: 0;
   margin: 0;
 }
@@ -418,7 +439,7 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
+  background-color: #000000;
   color: white;
   border-radius: 10px;
   text-align: center;

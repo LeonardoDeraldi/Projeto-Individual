@@ -19,6 +19,7 @@ body {
   display: flex;
   width: 80%;
   margin: auto;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .header {
@@ -31,15 +32,18 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .header a {
   text-decoration: none;
   color: #ffffff;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .agora {
   font-weight: 1000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .navbar {
@@ -61,6 +65,7 @@ body {
 
 .header h1 {
   margin: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .banner {
@@ -91,6 +96,12 @@ body {
 
 .banner .container span {
   font-weight: 800;
+}
+
+.container img{
+  width: 80px;
+  height: 80px;
+  margin: 0;
 }
 
 .box {
@@ -411,4 +422,10 @@ input {
   50%  {transform: rotate(25deg)}
   75%  {transform: rotate(-25deg)}
   100% {transform: rotate(25deg)}
+}
+
+.simulador h2{
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
