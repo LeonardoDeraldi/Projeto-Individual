@@ -52,7 +52,7 @@ function buscaApreencao(idUsuario) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        SELECT usuario.nome, quiz.certas, quiz.erradas FROM usuario JOIN quiz ON '${idUsuario}' = fkUsuario;
+        SELECT usuario.nome, quiz.certas, quiz.erradas FROM usuario JOIN quiz ON '${idUsuario}' = fkUsuario ORDER BY idQuiz desc limit 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
