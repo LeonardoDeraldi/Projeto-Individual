@@ -14,7 +14,7 @@ body {
   --tamanho-header: 100px;
   --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-login: calc(100vh - var(-s-tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-footer: 65px;
 }
 
@@ -23,7 +23,6 @@ body {
   width: 90%;
   margin: auto;
 }
-
 
 .header {
   height: var(--tamanho-header);
@@ -34,6 +33,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  border-bottom: 3px solid black;
 }
 
 .header a {
