@@ -24,7 +24,6 @@ body {
   margin: auto;
 }
 
-
 .header {
   height: var(--tamanho-header);
   background-color: #474b8a; 
@@ -34,6 +33,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  border-bottom: 3px solid black;
 }
 
 .header a {
