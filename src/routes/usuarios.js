@@ -20,7 +20,7 @@ router.post("/quizSelect", function (req, res) {
     usuarioController.quizSelect(req, res);
 });
 
-router.get("/buscaApreencao", function (req, res) {
+router.post("/buscaApreencao", function (req, res) {
     usuarioController.buscaApreencao(req, res);
 });
 

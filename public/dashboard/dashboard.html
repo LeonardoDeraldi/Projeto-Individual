@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OnlyBasketball | Dashboards</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -75,14 +75,14 @@
 
 <script>
 
-   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     let proximaAtualizacao;
 
     window.onload = exibirQuiz();
 
     function exibirQuiz() {
-        document.getElementById("graficos").innerHTML += 
-        `<div id="grafico">
+        document.getElementById("graficos").innerHTML +=
+            `<div id="grafico">
             <h2 class="tituloGraficos">
                 <span id="tituloGrafico">Gráfico de Tentativas</span>
             </h2>
@@ -103,7 +103,15 @@
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/usuarios/buscaApreencao/`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/usuarios/buscaApreencao/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.ID_USUARIO
+            })
+        }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -155,6 +163,6 @@
             config
         );
 
-    }   
+    }
 
 </script>

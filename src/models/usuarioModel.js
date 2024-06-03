@@ -16,7 +16,7 @@ function cadastrar(nome, email, senha, idTimes) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO usuario (nome, email, senha, fkTimes) VALUES ('${nome}', '${email}', '${senha}', '${idTimes}');
+        INSERT INTO usuario (nome, email, senha, fkTimes) VALUES ('${nome}', '${email}', '${senha}', ${idTimes});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -28,7 +28,7 @@ function registrar(corretas, incorretas, idUsuario) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO quiz (certas, erradas, fkUsuario) VALUES ('${corretas}', '${incorretas}', '${idUsuario}');
+        INSERT INTO quiz (certas, erradas, fkUsuario) VALUES (${corretas}, ${incorretas}, ${idUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -40,7 +40,7 @@ function quizSelect(idUsuario) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        SELECT usuario.nome, quiz.certas, quiz.erradas FROM usuario JOIN quiz ON '${idUsuario}' = fkUsuario;
+        SELECT usuario.nome, quiz.certas, quiz.erradas FROM usuario JOIN quiz ON ${idUsuario} = fkUsuario;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -52,7 +52,7 @@ function buscaApreencao(idUsuario) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        SELECT usuario.nome, quiz.certas, quiz.erradas FROM usuario JOIN quiz ON '${idUsuario}' = fkUsuario ORDER BY idQuiz desc limit 1;
+        SELECT usuario.nome, quiz.certas, quiz.erradas FROM usuario JOIN quiz ON  fkUsuario = ${idUsuario} ORDER BY idQuiz desc limit 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

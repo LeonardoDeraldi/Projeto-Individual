@@ -124,8 +124,9 @@ function registrar(req, res) {
 
     function buscaApreencao(req, res) {
         const limite_linhas = 1;
+        var idUsuario = req.body.idUsuarioServer
       
-        usuarioModel.buscaApreencao(limite_linhas).then(function (resultado) {
+        usuarioModel.buscaApreencao(idUsuario).then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
             } else {
@@ -137,6 +138,7 @@ function registrar(req, res) {
             res.status(500).json(erro.sqlMessage);
         });
       }
+
 module.exports = {
     autenticar,
     cadastrar,
