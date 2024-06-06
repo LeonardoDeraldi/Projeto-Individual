@@ -136,37 +136,26 @@
         let labels = ["Resultados"];
 
         let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'Certas',
-                data: [resposta[0].certas],
-                backgroundColor: 'blue',
-                borderColor: 'blue',
-                borderWidth: 1
-            },
-            {
-                label: 'Erradas',
-                data: [resposta[0].erradas],
-                backgroundColor: 'red',
-                borderColor: 'red',
-                borderWidth: 1
-            }]
-        };
+    labels: ["Certas", "Erradas"],
+    datasets: [{
+        data: [resposta[0].certas, resposta[0].erradas],
+        backgroundColor: ['blue', 'red'],
+        borderColor: ['blue', 'red'],
+        borderWidth: 1
+    }]
+};
 
-        // , resposta[0].erradas
+// Configuração do gráfico
+const config = {
+    type: 'pie',
+    data: dados,
+};
 
-        // Configuração do gráfico
-        const config = {
-            type: 'bar',
-            data: dados,
-        };
-
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvas`),
-            config
-        );
-
+// Adicionando gráfico criado em div na tela
+let myChart = new Chart(
+    document.getElementById('myChartCanvas'),
+    config
+);
     }
 
 </script>
