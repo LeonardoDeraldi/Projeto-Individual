@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/imgs/logo-removebg-preview.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+
+    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/estilo.css" />
+
+    <script src="../js/sessao.js"></script>
+    <!-- <script src="../js/alerta.js"></script> -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,70
+        0;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script> -->
+</head>
+
+<body>
+
+    <div class="janela">
+
+        <div class="header-left dash-header">
+
+            <h1>OnlyBasketball</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Inicio</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./cards.html">
+                <h3>Quiz</h3>
+            </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Gráficos</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+        </div>
+        
+        <div class="dash">
+            <div class="container">
+                <h1>Bem vindo de volta!!!</h1>
+                <div class="boxes">
+                  <div class="box">
+                    <img src="assets/imgs/logo-removebg-preview.png">
+                    <h4>Meus Valores</h4>
+                    <p>Meus valores são a determinação e resiliência, o meu segredo é nunca desistir daquilo que você almeja pois sempre com muita dedicação e esforço, você sempre alcança aquilo que você quer.</p>
+                  </div>
+                  <div class="box">
+                    <img src="assets/imgs/lakers.jpg">
+                    <h4>Porque o Lakers é meu time Favorito?</h4>
+                    <p>Pois o Lakers além dele ter muitos prêmios na NBA, eu também gosto da paleta de cores, o roxo é uma das minhas cores preferidas e também tem um dos melhores jogadores da história, sendo ele o Lebron James</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+        </script>
